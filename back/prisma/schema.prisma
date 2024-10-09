@@ -13,8 +13,8 @@ datasource db {
 model Student {
   id      Int    @id @default(autoincrement())
   name    String
-  group   Group  @relation(fields: [groupId], references: [id])
-  groupId Int
+  group   Group? @relation(fields: [groupId], references: [id])
+  groupId Int?
 
   @@index([id])
 }
