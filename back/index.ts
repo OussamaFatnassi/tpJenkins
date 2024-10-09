@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+export let prisma = new PrismaClient();
 
 const getAllStudents = async () => {
   const students = await prisma.student.findMany();
@@ -25,7 +25,7 @@ const getGrouplessStudents = async () => {
   return students;
 };
 
-Bun.serve({
+export const server = Bun.serve({
   port: 3000,
   async fetch(request) {
     const url = new URL(request.url);
